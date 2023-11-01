@@ -21,7 +21,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - run: cd door-app
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -29,6 +28,10 @@ jobs:
         cache: 'npm'
         cache-dependency-path: ./door-app/package-lock.json
     - run: npm ci
+      working-directory: ./door-app
     - run: npm run build --if-present
+      working-directory: ./door-app
     - run: npm run lint --if-present
+      working-directory: ./door-app
     - run: npm run test
+      working-directory: ./door-app
