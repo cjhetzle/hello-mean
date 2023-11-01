@@ -12,13 +12,14 @@ module.exports = function(app) {
                     console.log(`${err}`);
                     res.status(404).json({'msg': 'Not found'});
                 } else {
+                    console.log(`${doors}`);
                     res.json(doors);
                 }
             })
         }
     )
 
-    router.route('/doors')
+    router.route('/door')
     .post(
         function(req, res) {
             console.log(req.body);

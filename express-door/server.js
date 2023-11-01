@@ -7,6 +7,10 @@ var db = require('./db')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    return next();
+})
 
 require('./routes')(app);
 
