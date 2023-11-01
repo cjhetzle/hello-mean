@@ -14,6 +14,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    defaults:
+        run:
+          working-directory: ./door-app
+
     strategy:
       matrix:
         node-version: [ 18.x, 20.x, 21.x ]
@@ -28,10 +32,6 @@ jobs:
         cache: 'npm'
         cache-dependency-path: ./door-app/package-lock.json
     - run: npm ci
-      working-directory: ./door-app
     - run: npm run build --if-present
-      working-directory: ./door-app
     - run: npm run lint --if-present
-      working-directory: ./door-app
-    - run: npm run test
-      working-directory: ./door-app
+    - run: npm run test:prod
